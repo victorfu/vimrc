@@ -1,15 +1,27 @@
-"
+"***************************
 " Victor Fu
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"***************************
 
+" Install Vundle automatically
+" http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+"-----------------------------------------------------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" plugins
+" Plugins
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'fatih/vim-go'
@@ -17,20 +29,31 @@ Plugin 'fatih/molokai'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'bling/vim-airline'
-"Plugin 'bling/vim-bufferline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required, enable filetype-specific indenting and plugins
+"-----------------------------------------------------------------------------------------
 
+" Install plugins automatically
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+    :qall
+endif
+
+"
+" Settings
+"
 set history=100              " store 100 lines of history
-
 set showmode                 " display the current mode
 set ruler                    " always show current position
 set scrolloff=7              " set scroll offset to 7 lines above/below cursor
@@ -171,7 +194,7 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 " vim-airline
 set timeout timeoutlen=1000 ttimeoutlen=50
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 1
 " uncomment lines below to define straight tab separators
 "let g:airline#extensions#tabline#left_sep = ' '
