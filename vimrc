@@ -87,6 +87,8 @@ set ffs=unix,dos,mac
 autocmd FileType Makefile set noexpandtab
 autocmd FileType jade set tabstop=2|set softtabstop=2|set shiftwidth=2
 
+au BufNewFile,BufRead *.gradle set filetype=groovy
+
 " colors
 syntax on
 set hlsearch                 " highlight search results
@@ -184,7 +186,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger=","
+let g:UltiSnipsExpandTrigger="<F3>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
