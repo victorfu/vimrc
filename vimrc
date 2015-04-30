@@ -186,6 +186,13 @@ endfunction
 
 nmap <silent> <F7> :call ToggleSpell()<CR>])"
 
+" tab and space
+set lcs=tab:>-,trail:-
+set list
+
+" change cursor shape for insert mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 "
 " Plugins
@@ -234,3 +241,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" YouCompleteMe
+map <C-j> :YcmCompleter GoToDefinition<CR>
