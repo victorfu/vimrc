@@ -22,6 +22,10 @@ Pluglins
 ------------
 fatih/vim-go
 
+derekwyatt/vim-scala
+
+ekalinin/Dockerfile.vim
+
 fatih/molokai
 
 SirVer/ultisnips
