@@ -22,6 +22,8 @@ Pluglins
 ------------
 fatih/vim-go
 
+kien/ctrlp.vim
+
 derekwyatt/vim-scala
 
 ekalinin/Dockerfile.vim

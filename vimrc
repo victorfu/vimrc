@@ -25,6 +25,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'fatih/vim-go'
+Plugin 'kien/ctrlp.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'fatih/molokai'
