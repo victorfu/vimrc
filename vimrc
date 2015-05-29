@@ -72,7 +72,7 @@ set wildchar=<TAB>           " start wild expansion in the command line using <T
 set wildmenu                 " wild char completion menu
 
 " ignore these files while expanding wild chars
-set wildignore=*.o,*.class,*.pyc
+set wildignore=*.o,*.class,*.pyc,*/tmp/*,*.so,*.swp,*.zip
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -248,3 +248,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " YouCompleteMe
 map <C-j> :YcmCompleter GoToDefinition<CR>
+
+" CtrlP
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
