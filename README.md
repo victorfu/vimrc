@@ -34,6 +34,8 @@ ekalinin/Dockerfile.vim
 
 moll/vim-node
 
+vim-ruby/vim-ruby
+
 fatih/molokai
 
 SirVer/ultisnips
@@ -50,11 +52,13 @@ scrooloose/syntastic
 
 Raimondi/delimitMate
 
-Valloric/YouCompleteMe
-
 flazz/vim-colorschemes
 
 tpope/vim-fugitive
+
+tpope/vim-surround
+
+Valloric/YouCompleteMe
 
 
 CREDITS
