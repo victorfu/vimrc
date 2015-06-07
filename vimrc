@@ -132,6 +132,7 @@ augroup END
 
 set background=dark
 set t_Co=256
+set term=screen-256color
 
 if has("gui_running")
   colorscheme moria
