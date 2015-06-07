@@ -83,27 +83,11 @@ set wildignore=*.o,*.class,*.pyc,*/tmp/*,*.so,*.swp,*.zip
 set backspace=indent,eol,start
 set whichwrap+=<,>,b,s,h,l,[,]
 
-" auto reload vimrc when editing it
-autocmd! BufWritePost .vimrc source ~/.vimrc
-
 " disable annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-" vimtp#80 restore cursor to file position in previous editing session
-set viminfo='10,\"100,:20,%,n~/.viminfo
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
 
 " formatting
 set copyindent               " copy the previous indentation on autoindenting
@@ -115,21 +99,10 @@ set shiftwidth=4
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set ffs=unix,dos,mac
-autocmd FileType Makefile set noexpandtab
-autocmd FileType jade set tabstop=2|set softtabstop=2|set shiftwidth=2
-
-au BufNewFile,BufRead *.gradle set filetype=groovy
 
 " colors
 syntax on
 set hlsearch                 " highlight search results
-" highlight current line in the current window
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
-
 set background=dark
 set t_Co=256
 set term=screen-256color
@@ -168,6 +141,14 @@ fun! Big5()
   set fileencoding=big5
 endfun
 
+" enable function folding
+set foldmethod=indent
+set foldlevelstart=10
+
+" tab and space
+set lcs=tab:>-,trail:-
+set list
+
 " move around tabs
 map <S-H> gT                     " go to prev tab
 map <S-L> gt                     " go to next tab
@@ -175,11 +156,7 @@ map <C-t><C-t> :tabnew<CR>       " new tab
 map <C-t><C-w> :tabclose<CR>     " close tab
 map vs :vsplit
 
-" enable function folding
-set foldmethod=indent
-set foldlevelstart=10
-
-" Spell Check
+" spell check
 let b:myLang=0
 let g:myLangList=["nospell","en_gb"]
 function! ToggleSpell()
@@ -192,12 +169,7 @@ function! ToggleSpell()
     endif
     echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
-
 nmap <silent> <F7> :call ToggleSpell()<CR>])"
-
-" tab and space
-set lcs=tab:>-,trail:-
-set list
 
 " change cursor shape for insert mode
 if exists('$TMUX')
@@ -207,6 +179,49 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+" vimtp#80 restore cursor to file position in previous editing session
+set viminfo='10,\"100,:20,%,n~/.viminfo
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+" highlight current line in the current window
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
+" makefile settings
+autocmd FileType Makefile set noexpandtab
+
+" jade settings
+autocmd FileType jade set tabstop=2|set softtabstop=2|set shiftwidth=2
+
+" gradle is groovy
+autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+
+" fdoc is yaml
+autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+
+" md is markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set spell
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" auto reload vimrc when editing it
+autocmd! BufWritePost .vimrc source ~/.vimrc
+
 
 "
 " Plugins
