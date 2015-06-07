@@ -30,6 +30,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'moll/vim-node'
 Plugin 'fatih/molokai'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -256,3 +257,5 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+let g:ctrlp_max_files = 500
+let g:ctrlp_working_path_mode = 'c'
