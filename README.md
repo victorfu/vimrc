@@ -26,7 +26,13 @@ kien/ctrlp.vim
 
 derekwyatt/vim-scala
 
+digitaltoad/vim-jade
+
+kchmck/vim-coffee-script
+
 ekalinin/Dockerfile.vim
+
+moll/vim-node
 
 fatih/molokai
 
@@ -50,3 +56,10 @@ flazz/vim-colorschemes
 
 tpope/vim-fugitive
 
+
+CREDITS
+-------
+
+My vimrc settings are mostly inspired by the followings:
++ [Abner's vimrc](https://github.com/houjunchen/vimrc.git)
++ [Wuman's vimrc](https://github.com/wuman/vimrc.git)
