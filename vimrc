@@ -24,7 +24,6 @@ call vundle#begin()
 " Plugins
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'digitaltoad/vim-jade'
@@ -39,11 +38,18 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
-Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'toyamarinyon/vim-swift'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'mxw/vim-jsx'
+Plugin 'jaxbot/syntastic-react'
+Plugin 'justinj/vim-react-snippets'
+" Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,7 +83,7 @@ set wildchar=<TAB>           " start wild expansion in the command line using <T
 set wildmenu                 " wild char completion menu
 
 " ignore these files while expanding wild chars
-set wildignore=*.o,*.class,*.pyc,*/tmp/*,*.so,*.swp,*.zip
+set wildignore=*.o,*.class,*.pyc,*/tmp/*
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -90,6 +96,7 @@ set t_vb=
 set tm=500
 
 " formatting
+set autoindent
 set copyindent               " copy the previous indentation on autoindenting
 set smarttab                 " insert tabs on line start according to context
 set expandtab                " replace <TAB> with spaces
@@ -203,9 +210,6 @@ augroup END
 " makefile settings
 autocmd FileType Makefile set noexpandtab
 
-" jade settings
-autocmd FileType jade set tabstop=2|set softtabstop=2|set shiftwidth=2
-
 " gradle is groovy
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 
@@ -222,28 +226,23 @@ autocmd VimResized * :wincmd =
 " auto reload vimrc when editing it
 autocmd! BufWritePost .vimrc source ~/.vimrc
 
+" javascript and jade settings
+autocmd FileType javascript,jade set tabstop=2|set softtabstop=2|set shiftwidth=2
+
+" set leader to ,
+let mapleader=","
+let g:mapleader=","
 
 "
 " Plugins
 "
-" vim-go settings
-let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 0
-let g:go_play_open_browser = 0
-let g:go_auto_type_info = 0
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-"let g:go_snippet_engine = "UltiSnips"
 
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" vim-jsx
+" allow JSX in normal JS files
+let g:jsx_ext_required = 0
+
+" syntastic-react
+let g:syntastic_javascript_checkers = ['eslint']
 
 " vim-airline
 set timeout timeoutlen=1000 ttimeoutlen=50
@@ -257,11 +256,13 @@ let g:airline#extensions#tmuxline#enabled = 0
 
 " NERDTree
 " open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd vimenter * if !argc() | NERDTree | endif
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-map <C-n> :NERDTreeToggle<CR>
+" toggle nerdtree drawer
+nnoremap <leader>d :NERDTreeToggle<CR>
+" open nerdtree to the current file
+nnoremap <leader>f :NERDTreeFind<CR>
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -273,7 +274,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " YouCompleteMe
-map <C-j> :YcmCompleter GoToDefinition<CR>
+" map <C-j> :YcmCompleter GoToDefinition<CR>
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
