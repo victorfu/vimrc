@@ -34,7 +34,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/molokai'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
@@ -49,7 +50,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mxw/vim-jsx'
 Plugin 'jaxbot/syntastic-react'
 Plugin 'justinj/vim-react-snippets'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -283,6 +284,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " YouCompleteMe
 " map <C-j> :YcmCompleter GoToDefinition<CR>
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
 
 " CtrlP
 let g:ctrlp_custom_ignore = {
