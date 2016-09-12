@@ -50,7 +50,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mxw/vim-jsx'
 Plugin 'jaxbot/syntastic-react'
 Plugin 'justinj/vim-react-snippets'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'elzr/vim-json'
+" Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
