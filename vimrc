@@ -44,13 +44,17 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'toyamarinyon/vim-swift'
-Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mxw/vim-jsx'
 Plugin 'jaxbot/syntastic-react'
 Plugin 'justinj/vim-react-snippets'
 Plugin 'elzr/vim-json'
+Plugin 'klen/python-mode'
+Plugin 'hynek/vim-python-pep8-indent'
+
 " Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
@@ -91,6 +95,7 @@ set ignorecase               " ignore case when searching
 set smartcase                " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set wildchar=<TAB>           " start wild expansion in the command line using <TAB>
 set wildmenu                 " wild char completion menu
+set mouse=a
 
 " ignore these files while expanding wild chars
 set wildignore=*.o,*.class,*.pyc,*/tmp/*
@@ -217,9 +222,6 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" makefile settings
-autocmd FileType Makefile set noexpandtab
-
 " gradle is groovy
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 
@@ -236,8 +238,10 @@ autocmd VimResized * :wincmd =
 " auto reload vimrc when editing it
 autocmd! BufWritePost .vimrc source ~/.vimrc
 
-" javascript and jade settings
-autocmd FileType javascript,jade set tabstop=2|set softtabstop=2|set shiftwidth=2
+" filetype settings
+autocmd FileType Makefile set noexpandtab
+autocmd FileType coffee,javascript,json,yaml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 
 " set leader to ,
 let mapleader=","
@@ -250,6 +254,17 @@ let g:mapleader=","
 " vim-jsx
 " allow JSX in normal JS files
 let g:jsx_ext_required = 0
+
+" syntastic
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_ignore_files = ['\.py$']
+let g:syntastic_python_checkers = ['flake8']
+
+" python-mode
+let g:pymode_python = 'python3'
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_lint_checkers = ['python', 'pyflakes', 'pep8']
 
 " syntastic-react
 let g:syntastic_javascript_checkers = ['eslint']
