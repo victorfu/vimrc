@@ -32,7 +32,6 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'moll/vim-node'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/molokai'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -54,7 +53,12 @@ Plugin 'justinj/vim-react-snippets'
 Plugin 'elzr/vim-json'
 Plugin 'klen/python-mode'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'skammer/vim-css-color'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
 
+" Plugin 'SirVer/ultisnips'
 " Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
@@ -287,16 +291,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " toggle nerdtree drawer
 nnoremap <leader>d :NERDTreeToggle<CR>
 " open nerdtree to the current file
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>s :NERDTreeFind<CR>
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<F3>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<F3>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsEditSplit="vertical"
 
 " YouCompleteMe
 " map <C-j> :YcmCompleter GoToDefinition<CR>
