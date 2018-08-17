@@ -24,40 +24,82 @@ call vundle#begin()
 " Plugins
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'moll/vim-node'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'fatih/molokai'
-Plugin 'honza/vim-snippets'
+" Theme foor vim
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'jiangmiao/auto-pairs'
+Plugin 'fatih/molokai'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'toyamarinyon/vim-swift'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/yajs.vim'
-Plugin 'othree/es.next.syntax.vim'
+
+" Display indention
 Plugin 'nathanaelkane/vim-indent-guides'
+
+" Code static check
+Plugin 'scrooloose/syntastic'
+
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim
+Plugin 'kien/ctrlp.vim'
+
+" Insert or delete brackets, parens, quotes in pair
+Plugin 'jiangmiao/auto-pairs'
+
+" Default snippets
+Plugin 'honza/vim-snippets'
+
+" Great file system explorer
+Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdcommenter'
+
+" Improve javascript syntax higlighting, needed for good folding and good-looking javascript code
+Plugin 'jelera/vim-javascript-syntax'
+
+"Improved json syntax highlighting
+Plugin 'elzr/vim-json'
+
+" Syntax highlighting for .jsx (js files for react js)
 Plugin 'mxw/vim-jsx'
+
+" Syntax highlighting for typescript
+Plugin 'leafgarland/typescript-vim'
+
+"Add Support css3 property
+Plugin 'hail2u/vim-css3-syntax'
+
+" Syntax highlighting for mustache & handlebars
+Plugin 'mustache/vim-mustache-handlebars'
+
+"Syntax highlighting for Stylus
+Plugin 'wavded/vim-stylus'
+
+" Add support for taltoad/vim-jadeumarkdown
+Plugin 'tpope/vim-markdown'
+
+" Highlights the matching HTML tag when the cursor is positioned on a tag.
+Plugin 'gregsexton/MatchTag'
+
+" Automatically add closing tags in html-like formats
+Plugin 'alvan/vim-closetag'"
+
+" HTML5 + inline SVG omnicomplete funtion, indent and syntax for Vim.
+Plugin 'othree/html5.vim'
+
+" Auto format tool
+Plugin 'Chiel92/vim-autoformat'
+
+" Lang specific syntax
+Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'jaxbot/syntastic-react'
 Plugin 'justinj/vim-react-snippets'
-Plugin 'elzr/vim-json'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'moll/vim-node'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'toyamarinyon/vim-swift'
 Plugin 'klen/python-mode'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'skammer/vim-css-color'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
 
+" Plugin 'othree/yajs.vim'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'skammer/vim-css-color'
+" Plugin 'pangloss/vim-javascript'
 " Plugin 'SirVer/ultisnips'
 " Plugin 'Valloric/YouCompleteMe'
 
@@ -85,21 +127,37 @@ endif
 "
 " Settings
 "
-set history=100              " store 100 lines of history
-set showmode                 " display the current mode
-set ruler                    " always show current position
-set scrolloff=7              " set scroll offset to 7 lines above/below cursor
-set autoread                 " auto read when file is changed from outside
-set nu                       " display line numbers
-set clipboard=unnamed        " yank to the system register (*) by default
-set hid                      " hide abandon buffers in order to not lose undo history
-set showmatch                " cursor shows matching ) and }
-set incsearch                " incremental search
-set ignorecase               " ignore case when searching
-set smartcase                " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set wildchar=<TAB>           " start wild expansion in the command line using <TAB>
-set wildmenu                 " wild char completion menu
+
+" store 100 lines of history
+set history=100
+" display the current mode
+set showmode
+" always show current position
+set ruler
+" set scroll offset to 7 lines above/below cursor
+set scrolloff=7
+" auto read when file is changed from outsidu
+set autoread
+" display line numbers
+set number
+" yank to the system register (*) by default
+set clipboard=unnamed
+" hide abandon buffers in order to not lose undo history
+set hid
+" cursor shows matching ) and }
+set showmatch
+" incremental search
+set incsearch
+" ignore case when searching
+set ignorecase
+" ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smartcase
+" start wild expansion in the command line using <TAB>
+set wildchar=<TAB>
+" wild char completion menu
+set wildmenu
 set mouse=a
+set ttyfast
 
 " ignore these files while expanding wild chars
 set wildignore=*.o,*.class,*.pyc,*/tmp/*
@@ -116,19 +174,25 @@ set tm=500
 
 " formatting
 set autoindent
-set copyindent               " copy the previous indentation on autoindenting
-set smarttab                 " insert tabs on line start according to context
-set expandtab                " replace <TAB> with spaces
+set smartindent
+" copy the previous indentation on autoindenting
+set copyindent
+" insert tabs on line start according to context
+set smarttab
+" replace <TAB> with spaces
+set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set shiftround
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set ffs=unix,dos,mac
 
 " colors
 syntax on
-set hlsearch                 " highlight search results
+" highlight search results
+set hlsearch
 set background=dark
 set t_Co=256
 set term=screen-256color
@@ -139,8 +203,8 @@ else
   colorscheme wombat256mod
 endif
 
-" files
-set nobackup                 " no *~ backup files
+" no *~ backup files
+set nobackup
 
 " statusline
 set laststatus=2
@@ -168,12 +232,18 @@ fun! Big5()
 endfun
 
 " enable function folding
-set foldmethod=indent
-set foldlevelstart=10
+let javaScript_fold=1
+" set foldmethod=indent
+set foldlevelstart=99
+set nofoldenable
 
 " tab and space
 set lcs=tab:>-,trail:-
 set list
+
+" set leader to ,
+let mapleader=","
+let g:mapleader=","
 
 " move around tabs
 map <S-H> gT                     " go to prev tab
@@ -226,13 +296,8 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-" gradle is groovy
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
-
-" fdoc is yaml
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
-
-" md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set spell
 
@@ -246,14 +311,24 @@ autocmd! BufWritePost .vimrc source ~/.vimrc
 autocmd FileType Makefile set noexpandtab
 autocmd FileType coffee,javascript,json,yaml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType typescript setlocal omnifunc=typescriptcomlete#CompleteTS
+au FileType htmldjango set ft=html.htmldjango
+au FileType scss set ft=scss.css
+au FileType less set ft=less.css
 
-" set leader to ,
-let mapleader=","
-let g:mapleader=","
 
-"
+"""
 " Plugins
-"
+"""
+
+" Enable for files with this extensions
+let g:closetag_filenames = "*.handlebars,*.html,*.xhtml,*.phtml"
+
+" autoformat
+noremap <F3> :Autoformat<CR>
 
 " vim-jsx
 " allow JSX in normal JS files
@@ -277,11 +352,15 @@ let g:syntastic_javascript_checkers = ['eslint']
 set timeout timeoutlen=1000 ttimeoutlen=50
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'wombat'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tmuxline#enabled = 0
 " uncomment lines below to define straight tab separators
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tmuxline#enabled = 0
 
 " NERDTree
 " open a NERDTree automatically when vim starts up if no files were specified
@@ -292,6 +371,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 nnoremap <leader>d :NERDTreeToggle<CR>
 " open nerdtree to the current file
 nnoremap <leader>s :NERDTreeFind<CR>
+"let NERDTreeMapOpenInTab='\r'
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
