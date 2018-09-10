@@ -95,6 +95,12 @@ Plugin 'othree/es.next.syntax.vim'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'klen/python-mode'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'fatih/vim-go'
 
 " Plugin 'othree/yajs.vim'
 " Plugin 'tpope/vim-fugitive'
@@ -181,9 +187,9 @@ set copyindent
 set smarttab
 " replace <TAB> with spaces
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set shiftround
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
@@ -395,3 +401,8 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_max_files = 500
 let g:ctrlp_working_path_mode = 'c'
+
+" vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
