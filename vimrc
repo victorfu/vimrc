@@ -52,22 +52,25 @@ Plugin 'scrooloose/nerdtree'
 " Improve javascript syntax higlighting, needed for good folding and good-looking javascript code
 Plugin 'jelera/vim-javascript-syntax'
 
-"Improved json syntax highlighting
+" Improved json syntax highlighting
 Plugin 'elzr/vim-json'
 
 " Syntax highlighting for .jsx (js files for react js)
 Plugin 'mxw/vim-jsx'
 
+" Tools and environment for developing Node.js
+Plugin 'moll/vim-node'
+
 " Syntax highlighting for typescript
 Plugin 'leafgarland/typescript-vim'
 
-"Add Support css3 property
+" Add Support css3 property
 Plugin 'hail2u/vim-css3-syntax'
 
 " Syntax highlighting for mustache & handlebars
 Plugin 'mustache/vim-mustache-handlebars'
 
-"Syntax highlighting for Stylus
+" Syntax highlighting for Stylus
 Plugin 'wavded/vim-stylus'
 
 " Add support for taltoad/vim-jadeumarkdown
@@ -85,29 +88,31 @@ Plugin 'othree/html5.vim'
 " Auto format tool
 Plugin 'Chiel92/vim-autoformat'
 
-" Lang specific syntax
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'jaxbot/syntastic-react'
-Plugin 'justinj/vim-react-snippets'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'moll/vim-node'
-Plugin 'othree/es.next.syntax.vim'
-Plugin 'toyamarinyon/vim-swift'
-Plugin 'klen/python-mode'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-easymotion.vim'
+" Comment hotkey
 Plugin 'tpope/vim-commentary'
+
+" Syntax highlighting for cpp
 Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" Syntax and intenting for swift
+Plugin 'toyamarinyon/vim-swift'
+
+" Syntax for Dockerfile
+Plugin 'ekalinin/Dockerfile.vim'
+
+" Golang development with syntax highlighting
 Plugin 'fatih/vim-go'
 
-" Plugin 'othree/yajs.vim'
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'skammer/vim-css-color'
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'SirVer/ultisnips'
+" Plugin 'easymotion/vim-easymotion'
+" Plugin 'haya14busa/incsearch.vim'
+" Plugin 'haya14busa/incsearch-easymotion.vim'
 " Plugin 'Valloric/YouCompleteMe'
+" Plugin 'klen/python-mode'
+" Plugin 'hynek/vim-python-pep8-indent'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -406,3 +411,10 @@ let g:ctrlp_working_path_mode = 'c'
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
+
+" vim-go Highlight
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
