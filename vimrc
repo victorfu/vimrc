@@ -152,7 +152,7 @@ set autoread
 " display line numbers
 set number
 " yank to the system register (*) by default
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 " hide abandon buffers in order to not lose undo history
 set hid
 " cursor shows matching ) and }
