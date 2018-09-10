@@ -76,9 +76,6 @@ Plugin 'wavded/vim-stylus'
 " Add support for taltoad/vim-jadeumarkdown
 Plugin 'tpope/vim-markdown'
 
-" Highlights the matching HTML tag when the cursor is positioned on a tag.
-Plugin 'gregsexton/MatchTag'
-
 " Automatically add closing tags in html-like formats
 Plugin 'alvan/vim-closetag'"
 
