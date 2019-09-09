@@ -24,11 +24,32 @@ call vundle#begin()
 " Plugins
 Plugin 'gmarik/Vundle.vim'
 
-" Theme foor vim
+""""""" Themes                  """""""""""
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fatih/molokai'
 Plugin 'flazz/vim-colorschemes'
+
+"""""""""""""""""""""""""""""""""""""""""""
+
+""""""" Syntax highlighters/indents """"""
+
+" Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'elzr/vim-json'
+Plugin 'moll/vim-node'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'wavded/vim-stylus'
+Plugin 'tpope/vim-markdown'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'toyamarinyon/vim-swift'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'fatih/vim-go'
+
+"""""""""""""""""""""""""""""""""""""""""""
 
 " Display indention
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -49,33 +70,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/nerdcommenter'
 
-" Improve javascript syntax higlighting, needed for good folding and good-looking javascript code
-Plugin 'jelera/vim-javascript-syntax'
-
-" Improved json syntax highlighting
-Plugin 'elzr/vim-json'
-
-" Syntax highlighting for .jsx (js files for react js)
-Plugin 'mxw/vim-jsx'
-
-" Tools and environment for developing Node.js
-Plugin 'moll/vim-node'
-
-" Syntax highlighting for typescript
-Plugin 'leafgarland/typescript-vim'
-
-" Add Support css3 property
-Plugin 'hail2u/vim-css3-syntax'
-
-" Syntax highlighting for mustache & handlebars
-Plugin 'mustache/vim-mustache-handlebars'
-
-" Syntax highlighting for Stylus
-Plugin 'wavded/vim-stylus'
-
-" Add support for taltoad/vim-jadeumarkdown
-Plugin 'tpope/vim-markdown'
-
 " Automatically add closing tags in html-like formats
 Plugin 'alvan/vim-closetag'"
 
@@ -88,21 +82,14 @@ Plugin 'Chiel92/vim-autoformat'
 " Comment hotkey
 Plugin 'tpope/vim-commentary'
 
-" Syntax highlighting for cpp
-Plugin 'octol/vim-cpp-enhanced-highlight'
+" Async linter
+Plugin 'w0rp/ale'
 
-" Syntax and intenting for swift
-Plugin 'toyamarinyon/vim-swift'
-
-" Syntax for Dockerfile
-Plugin 'ekalinin/Dockerfile.vim'
-
-" Golang development with syntax highlighting
-Plugin 'fatih/vim-go'
+" Code formatter
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']  }
 
 " Plugin 'tpope/vim-fugitive'
 " Plugin 'skammer/vim-css-color'
-" Plugin 'pangloss/vim-javascript'
 " Plugin 'SirVer/ultisnips'
 " Plugin 'easymotion/vim-easymotion'
 " Plugin 'haya14busa/incsearch.vim'
@@ -250,8 +237,8 @@ set lcs=tab:>-,trail:-
 set list
 
 " set leader to ,
-let mapleader=","
-let g:mapleader=","
+" let mapleader=","
+" let g:mapleader=","
 
 " move around tabs
 map <S-H> gT                     " go to prev tab
@@ -259,6 +246,7 @@ map <S-L> gt                     " go to next tab
 map <C-t><C-t> :tabnew<CR>       " new tab
 map <C-t><C-w> :tabclose<CR>     " close tab
 map vs :vsplit
+map te :tabedit
 
 " spell check
 let b:myLang=0
@@ -333,10 +321,16 @@ au FileType less set ft=less.css
 """
 
 " Enable for files with this extensions
-let g:closetag_filenames = "*.handlebars,*.html,*.xhtml,*.phtml"
+let g:closetag_filenames = "*.handlebars,*.html,*.xhtml,*.phtml,*.js,*.jsx"
 
 " autoformat
 noremap <F3> :Autoformat<CR>
+
+" prettier
+let g:prettier#config#print_width = 100
+let g:prettier#autoformat = 0
+let g:prettier#exec_cmd_async = 1
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " vim-jsx
 " allow JSX in normal JS files
