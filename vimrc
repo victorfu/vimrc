@@ -35,11 +35,15 @@ Plugin 'flazz/vim-colorschemes'
 """"""" Syntax highlighters/indents """"""
 
 " Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'mxw/vim-jsx'
+" Plugin 'peitalin/vim-jsx-typescript'
+" Plugin 'leafgarland/typescript-vim'
+
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
 Plugin 'moll/vim-node'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'wavded/vim-stylus'
@@ -296,6 +300,8 @@ autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set spell
+autocmd BufRead,BufNewFile *.tsx set filetype=typescript
+autocmd BufRead,BufNewFile *.jsx set filetype=javascript
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -305,7 +311,7 @@ autocmd! BufWritePost .vimrc source ~/.vimrc
 
 " filetype settings
 autocmd FileType Makefile set noexpandtab
-autocmd FileType coffee,javascript,json,yaml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType coffee,typescript,javascript,json,yaml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -314,7 +320,6 @@ autocmd FileType typescript setlocal omnifunc=typescriptcomlete#CompleteTS
 au FileType htmldjango set ft=html.htmldjango
 au FileType scss set ft=scss.css
 au FileType less set ft=less.css
-
 
 """
 " Plugins
@@ -374,6 +379,7 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 " open nerdtree to the current file
 nnoremap <leader>s :NERDTreeFind<CR>
 "let NERDTreeMapOpenInTab='\r'
+let NERDTreeShowHidden=1
 
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
