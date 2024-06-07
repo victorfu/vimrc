@@ -34,11 +34,6 @@ Plugin 'flazz/vim-colorschemes'
 
 """"""" Syntax highlighters/indents """"""
 
-" Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'mxw/vim-jsx'
-" Plugin 'peitalin/vim-jsx-typescript'
-" Plugin 'leafgarland/typescript-vim'
-
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'pangloss/vim-javascript'
@@ -47,11 +42,13 @@ Plugin 'moll/vim-node'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'wavded/vim-stylus'
-Plugin 'tpope/vim-markdown'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'fatih/vim-go'
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+
 
 """""""""""""""""""""""""""""""""""""""""""
 
