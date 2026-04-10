@@ -27,23 +27,28 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'toyamarinyon/vim-swift'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'fatih/vim-go'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 
 " === UI ===
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " === Editing ===
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 
+" === Git ===
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
 " === Lint & Format ===
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
@@ -52,7 +57,6 @@ call plug#end()
 " General Settings
 " =============================================================================
 
-set nocompatible
 filetype plugin indent on
 syntax on
 
@@ -80,6 +84,14 @@ set tm=500
 " No backup / swap
 set nobackup
 set noswapfile
+
+" Persistent undo
+set undofile
+set undodir=~/.vim/undodir
+
+" Faster CursorHold & sign column
+set updatetime=300
+set signcolumn=yes
 
 " =============================================================================
 " Search
@@ -127,13 +139,9 @@ set wildignore=*.o,*.class,*.pyc,*/tmp/*,*/node_modules/*,*/.git/*
 set background=dark
 set t_Co=256
 
-if !has("gui_running")
-  set term=screen-256color
-endif
-
-" Fallback colorscheme chain
-silent! colorscheme molokai
-silent! colorscheme wombat256mod
+" Colorscheme with fallback
+colorscheme molokai
+colorscheme wombat256mod
 
 " Highlight current line in active window only
 augroup CursorLine
@@ -319,17 +327,12 @@ nnoremap <leader>s :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
 
 " =============================================================================
-" Plugin: CtrlP
+" Plugin: fzf
 " =============================================================================
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|dist|build)$',
-  \ 'file': '\v\.(exe|so|dll|pyc)$',
-  \ }
-let g:ctrlp_max_files = 0          " no limit (relies on wildignore)
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_use_caching = 1
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>f :Rg<CR>
+nnoremap <leader>b :Buffers<CR>
 
 " =============================================================================
 " Plugin: vim-cpp-enhanced-highlight

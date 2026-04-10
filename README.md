@@ -8,7 +8,7 @@ Personal Vim configuration by [Victor Fu](mailto:supergothere@gmail.com).
 - **Syntax highlighting** for TypeScript, JSX/TSX, Go, Swift, C++, Dockerfile, Markdown, JSON, CSS3, Handlebars
 - **Linting** with [ALE](https://github.com/dense-analysis/ale) (ESLint, tsserver, flake8)
 - **Formatting** with [Prettier](https://github.com/prettier/vim-prettier) (auto-format on save)
-- **File navigation** with [NERDTree](https://github.com/scrooloose/nerdtree) and [CtrlP](https://github.com/kien/ctrlp.vim)
+- **File navigation** with [NERDTree](https://github.com/preservim/nerdtree) and [fzf](https://github.com/junegunn/fzf.vim)
 - **Airline** statusline with powerline fonts and tabline
 - **Sensible defaults**: 2-space indentation, dark background, cursor line highlight, smart search, system clipboard integration
 
@@ -27,6 +27,9 @@ vim +PlugInstall +qall
 | `Shift+H` / `Shift+L` | Previous / next tab |
 | `Ctrl+t Ctrl+t` | New tab |
 | `Ctrl+t Ctrl+w` | Close tab |
+| `Ctrl+p` | fzf file search |
+| `<leader>f` | fzf ripgrep search |
+| `<leader>b` | fzf buffer list |
 | `<leader>d` | Toggle NERDTree |
 | `<leader>s` | Find current file in NERDTree |
 | `F2` | Toggle paste mode |
@@ -38,9 +41,10 @@ vim +PlugInstall +qall
 | Category | Plugin |
 |----------|--------|
 | Theme | vim-airline, vim-airline-themes, molokai, vim-colorschemes |
-| Syntax | yats.vim, vim-jsx-pretty, vim-javascript, vim-json, vim-css3-syntax, vim-mustache-handlebars, vim-cpp-enhanced-highlight, vim-swift, Dockerfile.vim, vim-go, vim-markdown |
-| UI | vim-indent-guides, NERDTree, CtrlP |
-| Editing | auto-pairs, vim-commentary, vim-closetag, html5.vim |
+| Syntax | yats.vim, vim-jsx-pretty, vim-javascript, vim-json, vim-css3-syntax, vim-mustache-handlebars, vim-cpp-enhanced-highlight, vim-swift, Dockerfile.vim, vim-markdown |
+| UI | vim-indent-guides, NERDTree, fzf |
+| Editing | auto-pairs, vim-commentary, vim-surround, vim-closetag, html5.vim |
+| Git | vim-fugitive, vim-gitgutter |
 | Lint & Format | ALE, vim-prettier |
 
 ## Credits
