@@ -1,2 +1,6 @@
 *.swp
 bundle/
+autoload/
+plugged/
+.omc/
+.omx/
