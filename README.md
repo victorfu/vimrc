@@ -10,6 +10,7 @@ Personal Vim configuration by [Victor Fu](mailto:supergothere@gmail.com).
 - **Formatting** with [Prettier](https://github.com/prettier/vim-prettier) (auto-format on save)
 - **File navigation** with [NERDTree](https://github.com/preservim/nerdtree) and [fzf](https://github.com/junegunn/fzf.vim)
 - **Airline** statusline with powerline fonts and tabline
+- **LSP support** via [vim-lsp](https://github.com/prabirshrestha/vim-lsp) with auto-configured language servers (sourcekit-lsp for Swift, etc.)
 - **Sensible defaults**: 2-space indentation, dark background, cursor line highlight, smart search, system clipboard integration
 
 ## Installation
@@ -27,6 +28,11 @@ vim +PlugInstall +qall
 | `Shift+H` / `Shift+L` | Previous / next tab |
 | `Ctrl+t Ctrl+t` | New tab |
 | `Ctrl+t Ctrl+w` | Close tab |
+| `gd` | Go to definition (LSP) |
+| `gr` | Find references (LSP) |
+| `gi` | Go to implementation (LSP) |
+| `K` | Hover info (LSP) |
+| `<leader>rn` | Rename symbol (LSP) |
 | `Ctrl+p` | fzf file search |
 | `<leader>f` | fzf ripgrep search |
 | `<leader>b` | fzf buffer list |
@@ -45,6 +51,7 @@ vim +PlugInstall +qall
 | UI | vim-indent-guides, NERDTree, fzf |
 | Editing | auto-pairs, vim-commentary, vim-surround, vim-closetag, html5.vim |
 | Git | vim-fugitive, vim-gitgutter |
+| LSP | vim-lsp, vim-lsp-settings, asyncomplete.vim |
 | Lint & Format | ALE, vim-prettier |
 
 ## Credits

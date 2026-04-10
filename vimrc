@@ -25,7 +25,7 @@ Plug 'elzr/vim-json'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'toyamarinyon/vim-swift'
+Plug 'keith/swift.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
@@ -46,6 +46,12 @@ Plug 'othree/html5.vim'
 " === Git ===
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
+" === LSP & Completion ===
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " === Lint & Format ===
 Plug 'dense-analysis/ale'
@@ -347,3 +353,26 @@ let g:cpp_class_decl_highlight       = 1
 " =============================================================================
 
 let g:jsx_ext_required = 0    " allow JSX in .js files
+
+" =============================================================================
+" Plugin: vim-lsp
+" =============================================================================
+
+let g:lsp_diagnostics_enabled = 0          " use ALE for diagnostics instead
+let g:lsp_document_code_action_signs_enabled = 0
+
+nmap gd <plug>(lsp-definition)
+nmap gr <plug>(lsp-references)
+nmap gi <plug>(lsp-implementation)
+nmap K <plug>(lsp-hover)
+nmap <leader>rn <plug>(lsp-rename)
+
+" =============================================================================
+" Plugin: asyncomplete
+" =============================================================================
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <CR>    pumvisible() ? asyncomplete#close_popup() : "\<CR>"
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
