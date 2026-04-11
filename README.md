@@ -1,5 +1,5 @@
 <h1 align="center">
-  <code>~/.vim</code>
+  <code>~/.vimrc</code>
 </h1>
 
 <p align="center">
