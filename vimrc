@@ -111,9 +111,6 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" Clear search highlight with <Esc>
-nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
-
 " =============================================================================
 " Indentation & Formatting
 " =============================================================================
