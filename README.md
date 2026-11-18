@@ -58,9 +58,15 @@ Markdown/JSON
 | `Ctrl+p` | Find files (fzf) |
 | `<leader>f` | Ripgrep search |
 | `<leader>b` | Buffer list |
+| `<leader>cc` | Open quickfix list |
+| `<leader>n` / `<leader>p` | Next / previous quickfix item |
+| `<leader>a` | Next ALE error / warning |
 | `<leader>d` | Toggle NERDTree |
 | `<leader>s` | Reveal file in NERDTree |
 | `Shift+H/L` | Prev / next tab |
+| `Ctrl+h/j/k/l` | Move between splits |
+| `<leader>vs` | `:vsplit ` prompt |
+| `<leader>te` | `:tabedit` in current file's directory |
 
 #### Editing
 
@@ -68,7 +74,9 @@ Markdown/JSON
 |-----|--------|
 | `F2` | Toggle paste mode |
 | `F7` | Toggle spell check |
-| `Esc` | Clear search highlight |
+| `<leader>Enter` | Clear search highlight |
+| `*` / `#` (visual) | Search for selection |
+| `:W` | Save with sudo |
 
 ## Plugin Stack
 
