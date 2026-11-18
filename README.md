@@ -26,6 +26,12 @@ vim +PlugInstall +qall
 
 > vim-plug auto-installs on first launch if missing.
 
+**Requirements**
+
+- Vim 9.1+ — commenting, yank highlight and EditorConfig use Vim's bundled `comment`, `hlyank` and `editorconfig` packages
+- [ripgrep](https://github.com/BurntSushi/ripgrep) for `<leader>f` — `brew install ripgrep`
+- Node.js for Prettier and the TypeScript language server
+
 ## Architecture
 
 ```
@@ -39,7 +45,11 @@ Dockerfile        tsserver, …)                            gitgutter signs
 Markdown/JSON
 ```
 
+> Prettier formats on save; set `let g:prettier_on_save = 0` to turn it off.
+
 ## Key Bindings
+
+`<leader>` is Vim's default, `\`.
 
 #### LSP
 
@@ -72,6 +82,7 @@ Markdown/JSON
 
 | Key | Action |
 |-----|--------|
+| `gcc` / `gc` | Toggle comment (line / motion or selection) |
 | `F2` | Toggle paste mode |
 | `F7` | Toggle spell check |
 | `<leader>Enter` | Clear search highlight |
@@ -82,10 +93,10 @@ Markdown/JSON
 
 | Layer | Plugins |
 |-------|---------|
-| **Theme** | airline, molokai, vim-colorschemes |
-| **Syntax** | yats.vim, vim-jsx-pretty, vim-javascript, vim-json, vim-css3-syntax, vim-cpp-enhanced-highlight, swift.vim, Dockerfile.vim, vim-markdown, vim-mustache-handlebars |
+| **Theme** | airline, wombat256mod (vendored in `colors/`) |
+| **Syntax** | vim-jsx-pretty, vim-javascript, vim-cpp-enhanced-highlight, swift.vim, vim-markdown, vim-mustache-handlebars (TypeScript, JSON, CSS, HTML, Dockerfile use Vim's bundled syntax) |
 | **LSP** | vim-lsp, vim-lsp-settings, asyncomplete.vim |
-| **Editing** | vim-surround, vim-commentary, vim-repeat, auto-pairs, vim-highlightedyank, editorconfig-vim, vim-closetag, html5.vim |
+| **Editing** | vim-surround, vim-repeat, auto-pairs, vim-closetag; Vim's bundled `comment`, `hlyank`, `editorconfig` packages |
 | **Git** | vim-fugitive, vim-gitgutter |
 | **Lint** | ALE, vim-prettier |
 | **UI** | NERDTree, fzf, vim-indent-guides |
@@ -101,4 +112,4 @@ format     unix line endings          cursorline  active window only
 
 ## Credits
 
-Built on ideas from [Abner](https://github.com/houjunchen/vimrc) and [Wuman](https://github.com/wuman/vimrc).
+Built on ideas from [Abner](https://github.com/houjunchen/vimrc), [Wuman](https://github.com/wuman/vimrc) and [amix](https://github.com/amix/vimrc).

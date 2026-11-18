@@ -14,19 +14,13 @@ call plug#begin('~/.vim/plugged')
 " === Themes ===
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'fatih/molokai'
-Plug 'flazz/vim-colorschemes'
 
 " === Syntax ===
-Plug 'HerringtonDarkholme/yats.vim'          " TypeScript
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'elzr/vim-json'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'keith/swift.vim'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 
@@ -38,13 +32,9 @@ Plug 'junegunn/fzf.vim'
 
 " === Editing ===
 Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'machakann/vim-highlightedyank'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'alvan/vim-closetag'
-Plug 'othree/html5.vim'
 
 " === Git ===
 Plug 'tpope/vim-fugitive'
@@ -61,6 +51,11 @@ Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
+
+" Bundled with Vim 9.1 (replace vim-commentary, vim-highlightedyank, editorconfig-vim)
+packadd! comment
+packadd! hlyank
+packadd! editorconfig
 
 " =============================================================================
 " General Settings
@@ -169,12 +164,8 @@ set wildignore=*.o,*.class,*.pyc,*/tmp/*,*/node_modules/*,*/.git/*
 set background=dark
 set t_Co=256
 
-" Colorscheme with fallback
-try
-  colorscheme wombat256mod
-catch /^Vim\%((\a\+)\)\=:E185/
-  silent! colorscheme molokai
-endtry
+" Vendored in ~/.vim/colors
+colorscheme wombat256mod
 
 " Highlight current line in active window only
 augroup CursorLine
