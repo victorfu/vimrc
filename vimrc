@@ -9,6 +9,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Use Vim's bundled package when present (Vim 9.1+), else fall back to a plugin
+function! s:HasPack(name) abort
+  return !empty(globpath(&packpath, 'pack/*/opt/' . a:name))
+endfunction
+
 call plug#begin('~/.vim/plugged')
 
 " === Themes ===
@@ -35,6 +40,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'alvan/vim-closetag'
+if !s:HasPack('comment')      | Plug 'tpope/vim-commentary'       | endif
+if !s:HasPack('hlyank')       | Plug 'machakann/vim-highlightedyank' | endif
+if !s:HasPack('editorconfig') | Plug 'editorconfig/editorconfig-vim' | endif
 
 " === Git ===
 Plug 'tpope/vim-fugitive'
@@ -53,9 +61,9 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'java
 call plug#end()
 
 " Bundled with Vim 9.1 (replace vim-commentary, vim-highlightedyank, editorconfig-vim)
-packadd! comment
-packadd! hlyank
-packadd! editorconfig
+for s:pack in ['comment', 'hlyank', 'editorconfig']
+  if s:HasPack(s:pack) | execute 'packadd! ' . s:pack | endif
+endfor
 
 " =============================================================================
 " General Settings
