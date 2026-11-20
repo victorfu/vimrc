@@ -167,6 +167,13 @@ set t_Co=256
 " Vendored in ~/.vim/colors
 colorscheme wombat256mod
 
+" vim-json flags // comments as errors (pink bg); show them as normal comments
+" instead, since launch.json / tsconfig.json etc. are JSONC.
+augroup JsonComments
+  au!
+  au FileType json hi! link jsonCommentError Comment
+augroup END
+
 " Highlight current line in active window only
 augroup CursorLine
   au!
